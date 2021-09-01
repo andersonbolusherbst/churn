@@ -91,8 +91,8 @@ if submitted:
             streaming_tv,streaming_movies,month_to_month,one_year,two_year,bank_transfer,
             credit_card,e_check,mail_check,partner,Dependant,paperless_billing,tenure,Monthly_charges,Senior_citizen]).reshape(1,-1))
     st.write("The probability of Churning is", prediction[0])
+    
     if prediction > 0.5: 
-            st.write("Customer is likely to Churn")
             st.warning('Customer is likely to Churn')
     else: 
         st.write("Customer is not likely to churn")
