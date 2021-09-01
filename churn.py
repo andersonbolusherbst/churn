@@ -93,8 +93,11 @@ if submitted:
     st.write("The probability of Churning is", prediction[0])
     if prediction > 0.5: 
             st.write("Customer is likely to Churn")
+            st.warning('Customer is likely to Churn')
     else: 
         st.write("Customer is not likely to churn")
+        st.balloons()
+
 
 features_list = ['MultipleLines_Yes', 'InternetService_DSL',
        'InternetService_Fiber optic', 'OnlineSecurity_Yes', 'OnlineBackup_Yes',
