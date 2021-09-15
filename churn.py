@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 
 st.header("Churn Prediction")
 st.write("""Customer Churn prediction is very important for subscription companies, it can allow companies to customize their marketing or services for customers that are predicted to Churn(Unsubscribe).
-            This web app is displaying predictions of a pretrained model on the Telco Customer Churn Dataset.
+            This web app is displaying predictions of a pretrained model on the Telco Customer Churn Dataset. This is of course unique for each company. 
             **To use it** simply fill in all of the values of a customer and the model will predict whether that 
             customer will Churn or not.""")
 st.image('customer-churn-edit.jpeg')
