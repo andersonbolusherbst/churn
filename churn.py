@@ -5,10 +5,21 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 st.header("Churn Prediction")
-st.write("""Customer Churn prediction is very important for subscription companies, it can allow companies to customize their marketing or services for customers that are predicted to Churn(Unsubscribe).
-            This web app is displaying predictions of a pretrained model on the Telco Customer Churn Dataset. This is of course unique for each company. 
-            **To use it** simply fill in all of the values of a customer and the model will predict whether that 
-            customer will Churn or not.""")
+st.write("""Customer Churn prediction is very important for subscription companies, 
+            it can allow companies to customize their marketing or services for customers 
+            that are predicted to Churn(Unsubscribe)
+
+            """)
+st.markdown("***")
+st.write("""This web app is displaying predictions of a pretrained model on the Telco Customer
+             Churn Dataset. This is of course unique for each company, but with some imagination 
+             you can see whether it is applicable to yours. **To use it** simply fill
+              in all of the values of a customer and the model will predict whether that 
+            customer will Churn or not. This data all needs to be collected in the first place 
+            """)
+st.markdown("##")
+st.write("""For a model like this to work, the company needs to collect data on all of their customers, in this case the company had data 
+            for these fields for 7043 customers and the model created had an 80% chance of correctly predicting a Churn""")
 st.image('customer-churn-edit.jpeg')
 
 bst = lgb.Booster(model_file=r'new_churn.txt')
@@ -43,7 +54,7 @@ with st.form("myform"):
         Dependant = st.selectbox('Customer has dependants',options, format_func=lambda x: display[x])
         paperless_billing = st.selectbox("Paperless Billing",options, format_func=lambda x: display[x])
         tenure = st.number_input("Tenure in Months")
-        Monthly_charges = st.number_input('Average Monthly Bill')
+        Monthly_charges = st.number_input('Average Monthly Bill in Pounds')
         Senior_citizen = st.selectbox("Senior Citizen",options, format_func=lambda x: display[x])
     submitted = st.form_submit_button('Press when done')
 
@@ -90,7 +101,7 @@ if submitted:
             online_security,online_backup,device_protection,tech_support,
             streaming_tv,streaming_movies,month_to_month,one_year,two_year,bank_transfer,
             credit_card,e_check,mail_check,partner,Dependant,paperless_billing,tenure,Monthly_charges,Senior_citizen]).reshape(1,-1))
-    st.write("The probability of Churning is", prediction[0])
+    st.write("The probability of Churning is", "{:.0%}".format(prediction[0]))
     
     if prediction > 0.5: 
             st.warning('Customer is likely to Churn')
